@@ -20,7 +20,8 @@ h1,h2,h3{margin:0;letter-spacing:-.01em}h1{font-size:26px;font-weight:700}h2{fon
 .side{position:sticky;top:0;height:100vh;width:236px;flex:none;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:18px 12px}
 .brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}.brand b{display:block;font-size:14.5px;line-height:1.2}.brand span{font-size:12px;color:var(--muted)}
 .logo{width:36px;height:36px;border-radius:9px;object-fit:contain;background:var(--sunk);flex:none}.logo.dot{background:var(--accent)}
-.side nav{display:flex;flex-direction:column;gap:2px}
+.side nav{display:flex;flex-direction:column;gap:2px;flex:1;min-height:0;overflow-y:auto;margin:0 -4px;padding:0 4px;scrollbar-width:thin}
+.side{overflow:hidden}.side-foot{flex:none}
 .nav{display:flex;align-items:center;gap:12px;padding:9px 10px;border:0;background:none;border-radius:10px;cursor:pointer;color:var(--ink2);font-weight:550;text-align:left}
 .nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.nav span{flex:1}
 .nav:hover{background:var(--sunk)}.nav[aria-current="true"]{background:var(--accent-bg);color:var(--accent-ink)}
