@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RUVA Live Demo</title>
+<style>
+:root{--bg:#0B0F17;--ink:#E9EEF7;--mut:#8C97AD;--line:#1E2636;--acc:#2F6BFF}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)}
+header svg{width:32px;height:32px;flex:none}
+header b{font-size:17px;letter-spacing:-.01em}header small{display:block;color:var(--mut);font-size:12.5px;font-weight:400}
+header .grow{flex:1}
+button{font:inherit;font-size:13px;border:1px solid var(--line);background:#141B28;color:var(--ink);border-radius:9px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:#33415c}
+.stage{flex:1;display:flex;gap:22px;padding:18px 20px;min-height:0}
+.col{display:flex;flex-direction:column;gap:8px;min-height:0}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:8px}
+.lbl i{width:8px;height:8px;border-radius:50%;background:#2BD576;box-shadow:0 0 0 3px rgba(43,213,118,.18)}
+.phone{width:390px;flex:1;max-height:844px;border-radius:44px;border:10px solid #1A2130;box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 1px #2A3344;overflow:hidden;background:#fff;position:relative}
+.phone iframe{width:100%;height:100%;border:0;display:block}
+.desk{flex:1;min-width:0}
+.screen{flex:1;border-radius:14px;border:1px solid var(--line);overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.screen iframe{width:100%;height:100%;border:0;display:block}
+.flash{position:fixed;left:50%;top:70px;transform:translateX(-50%) translateY(-10px);background:var(--acc);color:#fff;font-weight:600;font-size:14px;padding:9px 16px;border-radius:999px;opacity:0;transition:.25s;pointer-events:none;box-shadow:0 10px 30px rgba(47,107,255,.4)}
+.flash.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:1100px){.stage{flex-direction:column;align-items:center;overflow:auto}.phone{height:780px;flex:none}.desk{width:100%;min-height:760px}}
+</style></head><body>
+<header>
+<svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="23" fill="#2F6BFF"/><g font-family="Arial Black,Inter,Arial,sans-serif" font-weight="900" font-size="36" text-anchor="middle" fill="#fff"><text x="31" y="46">R</text><text x="69" y="46">U</text><text x="31" y="84">V</text></g><rect x="51" y="53" width="36" height="36" rx="8" fill="#fff"/><text x="69" y="84" font-family="Arial Black,Inter,Arial,sans-serif" font-weight="900" font-size="36" text-anchor="middle" fill="#0E1524">A</text></svg>
+<div><b>RUVA live demo</b><small>Roofing Unified Visual Analytics · the rep's phone and the office, working on the same jobs</small></div>
+<span class="grow"></span>
+<button id="reset" type="button">Start over</button>
+</header>
+<div class="stage">
+  <div class="col"><div class="lbl"><i></i>Rep's phone · Marcus</div><div class="phone"><iframe id="app" src="app.html?as=u-marcus#home" title="Rep app"></iframe></div></div>
+  <div class="col desk"><div class="lbl"><i></i>Office dashboard · Jordan (owner)</div><div class="screen"><iframe id="dash" src="index.html?as=u-jordan" title="Office dashboard"></iframe></div></div>
+</div>
+<div class="flash" id="flash">Office updated from the field</div>
+<script>
+const f=document.getElementById('flash');let t;
+addEventListener('storage',e=>{if(e.key!=='ruva.demo.v14')return;clearTimeout(t);f.classList.add('on');t=setTimeout(()=>f.classList.remove('on'),1800)});
+let armed=false;document.getElementById('reset').onclick=e=>{if(!armed){armed=true;e.target.textContent='Tap again to reset';setTimeout(()=>{armed=false;e.target.textContent='Start over'},3000);return}
+try{Object.keys(localStorage).filter(k=>k.startsWith('ruva.demo')||k.startsWith('rlt.')||k.startsWith('ruva')).forEach(k=>localStorage.removeItem(k))}catch(err){}location.reload()};
+</script>
+</body></html>
