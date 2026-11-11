@@ -43,7 +43,8 @@ p{margin:0}
 .top nav{display:flex;gap:4px;margin-left:auto;align-items:center}
 .top nav a.l{color:rgba(255,255,255,.75);text-decoration:none;font-weight:700;font-size:15px;padding:8px 12px;border-radius:10px}
 .top nav a.l:hover{color:#fff;background:rgba(255,255,255,.07)}
-@media (max-width:760px){.top nav a.l{display:none}}
+@media (max-width:760px){.top .wrap{flex-wrap:wrap;height:auto;padding-block:10px 6px;gap:6px}.top nav{width:100%;margin-left:0;justify-content:space-between;gap:2px}.top nav a.l{font-size:14px;padding:6px 8px}}
+@media (max-width:360px){.top nav a.l{padding:6px 5px;font-size:13px}}
 
 /* hero */
 .hero{background:radial-gradient(900px 500px at 85% 10%,rgba(47,107,255,.28),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(47,107,255,.12),transparent 60%),var(--night);color:#fff;overflow:hidden}
