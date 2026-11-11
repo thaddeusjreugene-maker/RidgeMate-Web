@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quick questions — RUVA</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0F14">
+<link rel="icon" type="image/png" href="../favicon-48.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#11151C;--muted:#5D6675;--line:#E3E6EB;--bg:#F5F6F8;--card:#fff;--sunk:#F1F3F6;--accent:#2F6BFF;--accent-bg:#EAF0FF;--ok:#15803D;--f:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.top{background:#0B0F14;color:#fff;padding:14px max(16px,env(safe-area-inset-left,0px));padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.top .in{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;grid-template-columns:1fr 1fr;padding:4px 5px;font-weight:900;font-size:12px;line-height:1;place-items:center;flex:none}
+.mark b:last-child{background:#fff;color:#0B0F14;border-radius:3px;padding:1px 2px}
+.top strong{font-size:17px;letter-spacing:.06em}.top small{display:block;color:rgba(255,255,255,.6);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+main{max-width:680px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+h1{font-size:clamp(28px,6vw,38px);line-height:1.1;letter-spacing:-.03em;margin:8px 0 8px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 20px;font-size:17px}
+form{display:flex;flex-direction:column;gap:14px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.q h2{font-size:17px;margin:0;letter-spacing:-.01em;display:flex;gap:10px;align-items:baseline}.q h2 i{font-style:normal;color:var(--accent);font-weight:800;font-size:14px}
+.q p.h{margin:-6px 0 0;color:var(--muted);font-size:14px}
+.nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:13.5px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=number],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--sunk);border:1.5px solid transparent;border-radius:10px;padding:11px 12px;width:100%}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);background:#fff}
+textarea{resize:vertical;min-height:84px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:15px;font-weight:600;cursor:pointer;user-select:none}
+.chips input:checked+span{background:var(--accent-bg);border-color:var(--accent);color:#1E4FD6}
+.chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.scale span{text-align:center;padding:10px 0}
+.ends{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:-4px}
+button.go{font:inherit;font-weight:800;font-size:17px;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:16px;cursor:pointer;box-shadow:0 10px 24px -10px rgba(47,107,255,.6)}
+button.go:disabled{opacity:.6}
+.err{color:#B42318;font-size:14px;margin:0}
+.done{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 20px;text-align:center}
+.done .ck{width:54px;height:54px;border-radius:50%;background:#DCFCE7;color:var(--ok);display:grid;place-items:center;font-size:28px;font-weight:800;margin:0 auto 12px}
+.done h2{margin:0 0 6px;font-size:24px}.done p{color:var(--muted);margin:0}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:18px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><div class="mark" aria-hidden="true"><b>R</b><b>U</b><b>V</b><b>A</b></div><div><strong>RUVA</strong><small>Roofing Unified Visual Analytics</small></div></div></header>
+<main>
+<div id="intro"><h1 id="hi">A few quick questions</h1><p class="lede">Two minutes, mostly taps. Your answers tell me how to set RUVA up for your company.</p></div>
+<form id="fb" novalidate>
+  <div class="q"><h2><i>1</i>Your team</h2><p class="h">Rough numbers are fine.</p>
+    <div class="nums">
+      <label class="f">Sales reps<input type="number" name="reps" min="0" inputmode="numeric"></label>
+      <label class="f">Office people<input type="number" name="office" min="0" inputmode="numeric"></label>
+      <label class="f">Crews or subs<input type="number" name="crews" min="0" inputmode="numeric"></label>
+      <label class="f">Roofs a month<input type="number" name="roofs" min="0" inputmode="numeric"></label>
+    </div></div>
+  <div class="q"><h2><i>2</i>What has to be ready before you'd switch?</h2><p class="h">Pick all that apply.</p>
+    <div class="chips">
+      <label><input type="checkbox" name="switch" value="QuickBooks"><span>QuickBooks</span></label>
+      <label><input type="checkbox" name="switch" value="EagleView"><span>EagleView</span></label>
+      <label><input type="checkbox" name="switch" value="Saved order templates"><span>Saved order templates</span></label>
+      <label><input type="checkbox" name="switch" value="Moving my AccuLynx jobs over"><span>Moving my AccuLynx jobs over</span></label>
+      <label><input type="checkbox" name="switch" value="Supplier ordering (ABC, SRS, Beacon)"><span>Supplier ordering</span></label>
+      <label><input type="checkbox" name="switch" value="Training for the crew"><span>Training for the team</span></label>
+    </div>
+    <label class="f">Anything else?<input type="text" name="switch_other" maxlength="200"></label></div>
+  <div class="q"><h2><i>3</i>Your most-used material orders</h2><p class="h">For example: "GAF HDZ full tear-off," "Repair," "Retail upgrade."</p>
+    <textarea name="templates" maxlength="800" placeholder="One per line"></textarea></div>
+  <div class="q"><h2><i>4</i>How do homeowners keep up with their job today?</h2>
+    <div class="chips">
+      <label><input type="checkbox" name="homeowner" value="They call the office"><span>They call the office</span></label>
+      <label><input type="checkbox" name="homeowner" value="The rep texts them"><span>The rep texts them</span></label>
+      <label><input type="checkbox" name="homeowner" value="Email updates"><span>Email updates</span></label>
+      <label><input type="checkbox" name="homeowner" value="AccuLynx portal"><span>AccuLynx portal</span></label>
+      <label><input type="checkbox" name="homeowner" value="They mostly don't"><span>They mostly don't</span></label>
+    </div></div>
+  <div class="q"><h2><i>5</i>From what you saw, how close is RUVA to replacing AccuLynx?</h2>
+    <div class="chips scale">
+      <label><input type="radio" name="close" value="1"><span>1</span></label><label><input type="radio" name="close" value="2"><span>2</span></label><label><input type="radio" name="close" value="3"><span>3</span></label><label><input type="radio" name="close" value="4"><span>4</span></label><label><input type="radio" name="close" value="5"><span>5</span></label>
+    </div><div class="ends"><span>Not close</span><span>Ready now</span></div></div>
+  <div class="q"><h2><i>6</i>What should I show you next time?</h2>
+    <div class="chips">
+      <label><input type="checkbox" name="show" value="Material orders"><span>Material orders</span></label>
+      <label><input type="checkbox" name="show" value="Crew pay"><span>Crew pay</span></label>
+      <label><input type="checkbox" name="show" value="Job costing"><span>Job costing</span></label>
+      <label><input type="checkbox" name="show" value="Contracts and proposals"><span>Contracts and proposals</span></label>
+      <label><input type="checkbox" name="show" value="Reports"><span>Reports</span></label>
+    </div></div>
+  <div class="q"><h2><i>7</i>Best time for a 20-minute walkthrough?</h2>
+    <div class="chips">
+      <label><input type="radio" name="day" value="Monday"><span>Mon</span></label><label><input type="radio" name="day" value="Tuesday"><span>Tue</span></label><label><input type="radio" name="day" value="Wednesday"><span>Wed</span></label><label><input type="radio" name="day" value="Thursday"><span>Thu</span></label><label><input type="radio" name="day" value="Friday"><span>Fri</span></label><label><input type="radio" name="day" value="Saturday"><span>Sat</span></label>
+    </div>
+    <div class="chips">
+      <label><input type="radio" name="time" value="Morning"><span>Morning</span></label><label><input type="radio" name="time" value="Lunch"><span>Lunch</span></label><label><input type="radio" name="time" value="Afternoon"><span>Afternoon</span></label><label><input type="radio" name="time" value="Evening"><span>Evening</span></label>
+    </div></div>
+  <div class="q"><h2><i>8</i>Anything else on your mind?</h2>
+    <textarea name="notes" maxlength="2000" placeholder="What you liked, what bugged you, what you'd change"></textarea></div>
+  <p class="err" id="err" hidden></p>
+  <button class="go" type="submit" id="go">Send my answers</button>
+</form>
+<div class="done" id="done" hidden><div class="ck">✓</div><h2>Got it. Thank you.</h2><p>I'll set things up around what you told me and be in touch about a time.</p></div>
+<p class="foot">Your answers go only to Thad at RUVA.</p>
+</main>
+<script>
+const SB='https://fixqhaewtyddieoimmrv.supabase.co',KEY='sb_publishable_q4DRsHwiQPfdMIMgh-lD-g_O_kVURyb';
+const q=new URLSearchParams(location.search),name=(q.get('n')||'').slice(0,60),company=(q.get('c')||'').slice(0,80);
+if(name)document.getElementById('hi').textContent=name+', a few quick questions';
+const f=document.getElementById('fb'),err=document.getElementById('err'),go=document.getElementById('go');
+f.addEventListener('submit',async e=>{e.preventDefault();err.hidden=true;
+  const fd=new FormData(f),a={name,company};
+  for(const[k,v]of fd.entries()){if(v===''||v==null)continue;if(['switch','homeowner','show'].includes(k))(a[k]=a[k]||[]).push(v);else a[k]=String(v).slice(0,2000)}
+  if(Object.keys(a).length<=2){err.textContent='Answer at least one question first.';err.hidden=false;return}
+  go.disabled=true;go.textContent='Sending…';
+  try{const r=await fetch(SB+'/rest/v1/rpc/submit_feedback',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p:a})});
+    if(!r.ok)throw new Error(r.status);
+    f.hidden=true;document.getElementById('intro').hidden=true;document.getElementById('done').hidden=false;scrollTo(0,0)}
+  catch(x){err.textContent='That didn’t go through. Check your signal and try again.';err.hidden=false;go.disabled=false;go.textContent='Send my answers'}});
+</script>
+</body>
+</html>
