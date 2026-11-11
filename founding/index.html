@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Save a founding spot — RUVA</title>
+
+<meta name="theme-color" content="#0B0F14">
+<link rel="icon" type="image/png" href="../favicon-48.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#11151C;--muted:#5D6675;--line:#E3E6EB;--bg:#F5F6F8;--card:#fff;--sunk:#F1F3F6;--accent:#2F6BFF;--accent-bg:#EAF0FF;--ok:#15803D;--f:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.top{background:#0B0F14;color:#fff;padding:14px max(16px,env(safe-area-inset-left,0px));padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.top .in{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;grid-template-columns:1fr 1fr;padding:4px 5px;font-weight:900;font-size:12px;line-height:1;place-items:center;flex:none}
+.mark b:last-child{background:#fff;color:#0B0F14;border-radius:3px;padding:1px 2px}
+.top strong{font-size:17px;letter-spacing:.06em}.top small{display:block;color:rgba(255,255,255,.6);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+main{max-width:680px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+h1{font-size:clamp(28px,6vw,38px);line-height:1.1;letter-spacing:-.03em;margin:8px 0 8px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 20px;font-size:17px}
+form{display:flex;flex-direction:column;gap:14px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.q h2{font-size:17px;margin:0;letter-spacing:-.01em;display:flex;gap:10px;align-items:baseline}.q h2 i{font-style:normal;color:var(--accent);font-weight:800;font-size:14px}
+.q p.h{margin:-6px 0 0;color:var(--muted);font-size:14px}
+.nums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:13.5px;font-weight:600;color:var(--muted)}
+input[type=text],input[type=number],textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--sunk);border:1.5px solid transparent;border-radius:10px;padding:11px 12px;width:100%}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);background:#fff}
+textarea{resize:vertical;min-height:84px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:15px;font-weight:600;cursor:pointer;user-select:none}
+.chips input:checked+span{background:var(--accent-bg);border-color:var(--accent);color:#1E4FD6}
+.chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.scale span{text-align:center;padding:10px 0}
+.ends{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:-4px}
+button.go{font:inherit;font-weight:800;font-size:17px;background:var(--accent);color:#fff;border:0;border-radius:14px;padding:16px;cursor:pointer;box-shadow:0 10px 24px -10px rgba(47,107,255,.6)}
+button.go:disabled{opacity:.6}
+.err{color:#B42318;font-size:14px;margin:0}
+.done{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 20px;text-align:center}
+.done .ck{width:54px;height:54px;border-radius:50%;background:#DCFCE7;color:var(--ok);display:grid;place-items:center;font-size:28px;font-weight:800;margin:0 auto 12px}
+.done h2{margin:0 0 6px;font-size:24px}.done p{color:var(--muted);margin:0}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:18px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><a href="../" style="display:flex;gap:12px;align-items:center;color:#fff;text-decoration:none"><div class="mark" aria-hidden="true"><b>R</b><b>U</b><b>V</b><b>A</b></div><div><strong>RUVA</strong><small>Roofing Unified Visual Analytics</small></div></a></div></header>
+<main>
+<div id="intro"><h1>Save a founding spot</h1><p class="lede">$249 a month, locked in for life, with a free 60-day pilot alongside what you use now. Founding companies start in the first quarter of 2027, in order of signup. Leave your info and Thad will call you.</p></div>
+<form id="fb" novalidate>
+  <div class="q"><h2><i>1</i>You and your company</h2>
+    <label class="f">Your name<input type="text" name="contact" autocomplete="name" required maxlength="80"></label>
+    <label class="f">Company<input type="text" name="company" autocomplete="organization" required maxlength="120"></label>
+    <div class="nums"><label class="f">Phone<input type="text" name="phone" inputmode="tel" autocomplete="tel" maxlength="40"></label><label class="f">Email<input type="text" name="email" inputmode="email" autocomplete="email" maxlength="120"></label></div>
+    <label class="f">Town<input type="text" name="town" maxlength="80"></label></div>
+  <div class="q"><h2><i>2</i>Your setup</h2>
+    <div class="nums"><label class="f">How many users<input type="number" name="users" min="1" inputmode="numeric"></label><label class="f">What you use now<input type="text" name="current_tool" placeholder="AccuLynx, JobNimbus, paper…" maxlength="80"></label></div>
+    <label class="f">Anything we should know?<textarea name="notes" maxlength="2000"></textarea></label></div>
+  <p class="err" id="err" hidden></p>
+  <button class="go" type="submit" id="go">Save my spot</button>
+</form>
+<div class="done" id="done" hidden><div class="ck">✓</div><h2>You're on the list.</h2><p>Thad will reach out soon to set up your pilot.</p></div>
+<p class="foot">No payment now. Your info goes only to RUVA.</p>
+</main>
+<script>
+const SB='https://fixqhaewtyddieoimmrv.supabase.co',KEY='sb_publishable_q4DRsHwiQPfdMIMgh-lD-g_O_kVURyb';
+const f=document.getElementById('fb'),err=document.getElementById('err'),go=document.getElementById('go');
+f.addEventListener('submit',async e=>{e.preventDefault();err.hidden=true;const a={};for(const[k,v]of new FormData(f).entries())if(String(v).trim())a[k]=String(v).trim();
+  if(!a.contact||!a.company){err.textContent='Add your name and company.';err.hidden=false;return}
+  if(!a.phone&&!a.email){err.textContent='Add a phone number or email so Thad can reach you.';err.hidden=false;return}
+  go.disabled=true;go.textContent='Saving…';
+  try{const r=await fetch(SB+'/rest/v1/rpc/request_founding',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p:a})});if(!r.ok)throw new Error(r.status);
+    f.hidden=true;document.getElementById('intro').hidden=true;document.getElementById('done').hidden=false;scrollTo(0,0)}
+  catch(x){err.textContent='That didn’t go through. Try again, or email support@useruva.com.';err.hidden=false;go.disabled=false;go.textContent='Save my spot'}});
+</script>
+</body>
+</html>
