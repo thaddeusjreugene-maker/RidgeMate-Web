@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Your roof</title>
+<style>
+:root{--bg:#F2F2F7;--card:#FFFFFF;--ink:#111114;--mut:#6E6E76;--line:#E3E3E8;--acc:#0A66FF;--acc-ink:#fff;--ok:#16A34A;--soft:#EEF4FF;--warn:#B45309;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1C1C1E;--ink:#F5F5F7;--mut:#9A9AA2;--line:#2C2C30;--acc:#3D8BFF;--soft:#0F1E3A;--ok:#34C759;--warn:#F5A524;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:16px}
+.co{display:flex;align-items:center;gap:12px;padding:4px 2px}
+.co .lg{width:44px;height:44px;border-radius:11px;object-fit:contain;background:var(--card)}
+.co .mono{width:44px;height:44px;border-radius:11px;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px}
+.co b{display:block;font-size:17px}.co span{color:var(--mut);font-size:14px}
+h1{font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:8px 2px 0}
+.sub{color:var(--mut);margin:2px 2px 0}
+.card{background:var(--card);border-radius:18px;padding:18px}
+.h{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin:0 0 12px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.steps li{display:flex;align-items:center;gap:12px;padding:9px 0;color:var(--mut)}
+.steps i{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff}
+.steps li.d{color:var(--ink)}.steps li.d i{background:var(--ok);border-color:var(--ok)}.steps li.d i:after{content:"✓"}
+.steps li.n{color:var(--ink);font-weight:600}.steps li.n i{border-color:var(--acc);box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 11px var(--acc)}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{border:2px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px;background:var(--card)}
+.opt.on{border-color:var(--acc);background:var(--soft)}
+.opt .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.opt .n{font-size:20px;font-weight:700}.opt .p{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.opt .prod{color:var(--mut);font-size:15px}.opt .inc{font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:3px 9px;background:var(--acc);color:#fff;align-self:flex-start}
+.btn{appearance:none;border:0;border-radius:13px;background:var(--acc);color:var(--acc-ink);font:inherit;font-weight:600;padding:14px 16px;cursor:pointer;width:100%;text-align:center}
+.btn.ghost{background:transparent;color:var(--acc);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px}.row .btn{flex:1}
+.total{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.total b{font-size:26px;letter-spacing:-.01em}
+.scope{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+details.terms{margin-top:12px}details.terms summary{color:var(--acc);cursor:pointer;font-weight:600}
+details.terms div{white-space:pre-wrap;font-size:14px;color:var(--mut);margin-top:8px;max-height:280px;overflow:auto}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mut);margin-top:14px}
+input[type=text]{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px}
+.pad{margin-top:14px;border:1.5px dashed var(--line);border-radius:14px;background:#fff;position:relative;touch-action:none}
+.pad canvas{display:block;width:100%;height:150px;border-radius:14px}
+.pad .ph{position:absolute;inset:auto 0 12px;text-align:center;color:#999;font-size:14px;pointer-events:none}
+.pad .clr{position:absolute;top:8px;right:8px;background:#eee;border:0;border-radius:8px;padding:5px 10px;font:inherit;font-size:13px;color:#333}
+.agree{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:14.5px;color:var(--mut)}
+.agree input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var(--acc)}
+.done{display:flex;gap:12px;align-items:center}.done .ck{width:40px;height:40px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:22px;flex:none}
+.muted{color:var(--mut)}.sm{font-size:14px}
+.err{color:#D92D20;font-size:14px;margin-top:8px}
+.foot{text-align:center;color:var(--mut);font-size:13px;margin-top:8px}
+.foot a{color:var(--acc);text-decoration:none}
+.confirm{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.empty{text-align:center;padding:40px 18px}.empty b{display:block;font-size:20px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="card empty"><span class="muted">Loading your roof…</span></div></div>
+<script>
+(function(){
+const API='https://fixqhaewtyddieoimmrv.supabase.co/rest/v1/rpc/',KEY='sb_publishable_q4DRsHwiQPfdMIMgh-lD-g_O_kVURyb';
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=v=>'$'+Number(v||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const money0=v=>'$'+Math.round(Number(v||0)).toLocaleString('en-US');
+// Link looks like /h/<company>/<code>. The 404 page forwards it here as /h/#<company>/<code>.
+const parts=(location.hash.slice(1)||location.pathname.replace(/^\/h\/?/,'')).split('/').filter(Boolean);
+const TOKEN=(parts[parts.length-1]||'').replace(/[^a-z0-9]/gi,'');
+let V=null,pickI=null,busy=false,err='';
+async function rpc(fn,body){const r=await fetch(API+fn,{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify(body)});
+  const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||'Something went wrong');return j}
+function nice(m){m=String(m||'');if(/already signed/.test(m))return'This contract is already signed.';if(/not ready/.test(m))return'Your contract isn’t ready yet.';if(/name required/.test(m))return'Type your full name.';if(/bad signature/.test(m))return'Please sign again.';if(/link not found/.test(m))return'This link was turned off. Ask your rep for a new one.';return'Something went wrong. Try again.'}
+function steps(v){const st=v.status||'',ins=v.type==='Insurance',stage=v.stage||'',signed=!!v.signed,sold=st==='Sold'||signed;
+  const S=[['Roof inspected',['Inspected','Claim Pending','Sold'].includes(st)||signed],...(ins?[['Insurance approved',sold]]:[]),...(v.offer&&v.offer.tiers?[['Pick your roof',v.pick!=null||signed]]:[]),['Contract signed',signed],['Install day',/install|paid|final/i.test(stage)],['All done',/final check paid|paid in full/i.test(stage)]];
+  const cur=S.findIndex(s=>!s[1]);return S.map((s,i)=>`<li class="${s[1]?'d':i===cur?'n':''}"><i></i>${esc(s[0])}</li>`).join('')}
+function optsHTML(v){const o=v.offer;if(!o||!o.tiers||!o.tiers.length)return'';const sq=Number(o.sq||0),locked=!!v.signed;
+  return `<div class="card"><p class="h">${locked?'Your roof':'Pick your roof'}</p><div class="opts">${o.tiers.map((t,i)=>{const on=v.pick===i,tot=sq*Number(t.per||0),conf=pickI===i&&!on;
+    return `<div class="opt${on?' on':''}">${on?'<span class="tag">Your pick</span>':''}<div class="top"><span class="n">${esc(t.n)}</span>${tot?`<span class="p">${money0(tot)}</span>`:''}</div>${t.name?`<span class="prod">${esc(t.name)}</span>`:''}${t.inc?`<span class="inc">${esc(t.inc)}</span>`:''}
+    ${locked||on?'':conf?`<div class="confirm"><span class="sm">Choose <b>${esc(t.n)}</b> for ${money0(tot)}? Your rep will get your pick right away.</span><div class="row"><button class="btn ghost" data-x>Not yet</button><button class="btn" data-ok="${i}" ${busy?'disabled':''}>Yes, choose ${esc(t.n)}</button></div></div>`:`<button class="btn ghost" data-pick="${i}">Choose ${esc(t.n)}</button>`}</div>`}).join('')}</div>
+    ${!locked&&v.pick!=null?`<p class="sm muted" style="margin:12px 2px 0">You can change your pick until you sign.</p>`:''}</div>`}
+function contractHTML(v){const c=v.contract;if(v.signed)return `<div class="card"><div class="done"><span class="ck">✓</span><div><b>Contract signed</b><div class="sm muted">By ${esc(v.signed.name)} · ${esc(new Date(v.signed.at).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}))}</div></div></div>${c?`<div class="total"><span class="muted">Total</span><b>${money(c.total)}</b></div>`:''}</div>`;
+  if(!c)return v.pick!=null?`<div class="card"><p class="h">Contract</p><span class="muted">${esc(v.rep||'Your rep')} is getting your contract ready. You’ll sign it right here.</span></div>`:'';
+  return `<div class="card"><p class="h">Review and sign</p><ul class="scope">${(c.lines||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+    <div class="total"><span class="muted">Total</span><b>${money(c.total)}</b></div>
+    ${c.terms?`<details class="terms"><summary>Terms and conditions</summary><div>${esc(c.terms)}</div></details>`:''}
+    <label class="f">Your full name<input type="text" id="sname" autocomplete="name" value="${esc(v.name||'')}"></label>
+    <div class="pad"><canvas id="spad" aria-label="Sign here"></canvas><span class="ph" id="sph">Sign here with your finger</span><button class="clr" id="sclr" type="button">Clear</button></div>
+    <label class="agree"><input type="checkbox" id="sagree"><span>I’ve read this contract and agree to sign it electronically. My signature here counts the same as signing on paper.</span></label>
+    <button class="btn" id="ssign" ${busy?'disabled':''}>Sign contract</button>${err?`<div class="err">${esc(err)}</div>`:''}</div>`}
+function render(){const v=V,co=v.company||{},ini=(co.name||'R').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  document.title=(co.name||'Your roof');
+  app.innerHTML=`<div class="co">${co.logo?`<img class="lg" src="${esc(co.logo)}" alt="">`:`<span class="mono">${esc(ini)}</span>`}<div><b>${esc(co.name)}</b>${co.license?`<span>License ${esc(co.license)}</span>`:''}</div></div>
+    <div><h1>Hi${v.name?' '+esc(String(v.name).split(' ')[0]):''}, here’s your roof.</h1><p class="sub">${esc([v.address,v.city].filter(Boolean).join(', '))}</p></div>
+    <div class="card"><p class="h">Where things stand</p><ul class="steps">${steps(v)}</ul>${v.install?`<p class="sm" style="margin:10px 0 0"><b>Install day:</b> ${esc(new Date(v.install).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}))}</p>`:''}</div>
+    ${optsHTML(v)}${contractHTML(v)}
+    <div class="card"><p class="h">Questions?</p><span>${v.rep?`Your rep is <b>${esc(v.rep)}</b>. `:''}${co.phone?`Call <a href="tel:${esc(String(co.phone).replace(/[^0-9+]/g,''))}" style="color:var(--acc)">${esc(co.phone)}</a>.`:'Reply to the text you got this link in.'}</span></div>
+    <p class="foot">Powered by <a href="https://useruva.com" target="_blank" rel="noopener">RUVA</a></p>`;
+  pad()}
+function pad(){const c=$('#spad');if(!c)return;const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;const x=c.getContext('2d');x.scale(d,d);x.lineWidth=2.4;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';let down=false;c._ink=false;
+  const pt=e=>{const b=c.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+  c.onpointerdown=e=>{down=true;c.setPointerCapture(e.pointerId);const[a,b]=pt(e);x.beginPath();x.moveTo(a,b);$('#sph').hidden=true};
+  c.onpointermove=e=>{if(!down)return;const[a,b]=pt(e);x.lineTo(a,b);x.stroke();c._ink=true};c.onpointerup=c.onpointercancel=()=>down=false;
+  $('#sclr').onclick=()=>{x.clearRect(0,0,c.width,c.height);c._ink=false;$('#sph').hidden=false}}
+app.addEventListener('click',async e=>{const t=e.target;
+  const p=t.closest('[data-pick]');if(p){pickI=+p.dataset.pick;render();return}
+  if(t.closest('[data-x]')){pickI=null;render();return}
+  const ok=t.closest('[data-ok]');if(ok&&!busy){busy=true;render();try{V=await rpc('ho_pick',{p_token:TOKEN,p_i:+ok.dataset.ok})||V}catch(x){alertIn(nice(x.message))}busy=false;pickI=null;render();return}
+  if(t.id==='ssign'&&!busy){const c=$('#spad'),n=($('#sname').value||'').trim();err='';
+    if(n.length<2)err='Type your full name.';else if(!c._ink)err='Sign in the box with your finger.';else if(!$('#sagree').checked)err='Check the box to agree.';
+    if(err){const keep=n;render();$('#sname').value=keep;return}
+    const img=shrink(c);busy=true;t.disabled=true;t.textContent='Signing…';
+    try{V=await rpc('ho_sign',{p_token:TOKEN,p_name:n,p_img:img})||V;err=''}catch(x){err=nice(x.message)}busy=false;render();window.scrollTo({top:0,behavior:'smooth'})}});
+function alertIn(m){err=m}
+function shrink(c){const w=600,h=Math.round(w*c.height/c.width),o=document.createElement('canvas');o.width=w;o.height=h;const x=o.getContext('2d');x.drawImage(c,0,0,w,h);return o.toDataURL('image/png')}
+async function load(){if(TOKEN.length<24){gone();return}try{V=await rpc('ho_view',{p_token:TOKEN})}catch(e){app.innerHTML='<div class="card empty"><b>Couldn’t load</b><span class="muted">Check your connection and refresh.</span></div>';return}if(!V){gone();return}render()}
+function gone(){app.innerHTML='<div class="card empty"><b>This link isn’t active</b><span class="muted">It may have been turned off. Ask your roofing rep to send a new one.</span></div>'}
+load();
+})();
+</script>
+</body>
+</html>
