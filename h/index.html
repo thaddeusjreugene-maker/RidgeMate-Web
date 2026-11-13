@@ -78,12 +78,16 @@ function nice(m){m=String(m||'');if(/already signed/.test(m))return'This contrac
 function steps(v){const st=v.status||'',ins=v.type==='Insurance',stage=v.stage||'',signed=!!v.signed,sold=st==='Sold'||signed;
   const S=[['Roof inspected',['Inspected','Claim Pending','Sold'].includes(st)||signed],...(ins?[['Insurance approved',sold]]:[]),...(v.offer&&v.offer.tiers?[['Pick your roof',v.pick!=null||signed]]:[]),['Contract signed',signed],['Install day',/install|paid|final/i.test(stage)],['All done',/final check paid|paid in full/i.test(stage)]];
   const cur=S.findIndex(s=>!s[1]);return S.map((s,i)=>`<li class="${s[1]?'d':i===cur?'n':''}"><i></i>${esc(s[0])}</li>`).join('')}
-function optsHTML(v){const o=v.offer;if(!o||!o.tiers||!o.tiers.length)return'';const sq=Number(o.sq||0),locked=!!v.signed;
+function optsHTML(v){const o=v.offer;if(v.signed||!o||!o.tiers||!o.tiers.length)return'';const sq=Number(o.sq||0),locked=!!v.signed;
   return `<div class="card"><p class="h">${locked?'Your roof':'Pick your roof'}</p><div class="opts">${o.tiers.map((t,i)=>{const on=v.pick===i,tot=sq*Number(t.per||0),conf=pickI===i&&!on;
     return `<div class="opt${on?' on':''}">${on?'<span class="tag">Your pick</span>':''}<div class="top"><span class="n">${esc(t.n)}</span>${tot?`<span class="p">${money0(tot)}</span>`:''}</div>${t.name?`<span class="prod">${esc(t.name)}</span>`:''}${t.inc?`<span class="inc">${esc(t.inc)}</span>`:''}
     ${locked||on?'':conf?`<div class="confirm"><span class="sm">Choose <b>${esc(t.n)}</b> for ${money0(tot)}? Your rep will get your pick right away.</span><div class="row"><button class="btn ghost" data-x>Not yet</button><button class="btn" data-ok="${i}" ${busy?'disabled':''}>Yes, choose ${esc(t.n)}</button></div></div>`:`<button class="btn ghost" data-pick="${i}">Choose ${esc(t.n)}</button>`}</div>`}).join('')}</div>
     ${!locked&&v.pick!=null?`<p class="sm muted" style="margin:12px 2px 0">You can change your pick until you sign.</p>`:''}</div>`}
-function contractHTML(v){const c=v.contract;if(v.signed)return `<div class="card"><div class="done"><span class="ck">✓</span><div><b>Contract signed</b><div class="sm muted">By ${esc(v.signed.name)} · ${esc(new Date(v.signed.at).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}))}</div></div></div>${c?`<div class="total"><span class="muted">Total</span><b>${money(c.total)}</b></div>`:''}</div>`;
+function roofName(v){if(v.roof)return v.roof;const o=v.offer,t=o&&o.tiers&&v.pick!=null?o.tiers[v.pick]:null;return t?(t.name||t.n):''}
+function contractHTML(v){const c=v.contract;if(v.signed){const rn=roofName(v);return `<div class="card"><p class="h">Your new roof</p>${rn?`<div style="font-size:22px;font-weight:700;letter-spacing:-.01em">${esc(rn)}</div>`:''}
+    ${c&&c.lines&&c.lines.length?`<ul class="scope" style="margin-top:12px">${c.lines.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+    ${c?`<div class="total"><span class="muted">Total</span><b>${money(c.total)}</b></div>`:''}
+    <div class="done" style="margin-top:16px"><span class="ck">✓</span><div><b>Contract signed</b><div class="sm muted">By ${esc(v.signed.name)} · ${esc(new Date(v.signed.at).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}))}</div></div></div></div>`}
   if(!c)return v.pick!=null?`<div class="card"><p class="h">Contract</p><span class="muted">${esc(v.rep||'Your rep')} is getting your contract ready. You’ll sign it right here.</span></div>`:'';
   return `<div class="card"><p class="h">Review and sign</p><ul class="scope">${(c.lines||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     <div class="total"><span class="muted">Total</span><b>${money(c.total)}</b></div>
