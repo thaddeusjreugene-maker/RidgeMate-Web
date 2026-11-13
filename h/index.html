@@ -66,6 +66,7 @@ const API='https://fixqhaewtyddieoimmrv.supabase.co/rest/v1/rpc/',KEY='sb_publis
 const $=s=>document.querySelector(s),app=$('#app');
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=v=>'$'+Number(v||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtPh=p=>{const d=String(p||'').replace(/\D/g,'').replace(/^1(?=\d{10}$)/,'');return d.length===10?`(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`:String(p||'')};
 const money0=v=>'$'+Math.round(Number(v||0)).toLocaleString('en-US');
 // Link looks like /h/<company>/<code>. The 404 page forwards it here as /h/#<company>/<code>.
 const parts=(location.hash.slice(1)||location.pathname.replace(/^\/h\/?/,'')).split('/').filter(Boolean);
@@ -97,7 +98,7 @@ function render(){const v=V,co=v.company||{},ini=(co.name||'R').split(/\s+/).map
     <div><h1>Hi${v.name?' '+esc(String(v.name).split(' ')[0]):''}, here’s your roof.</h1><p class="sub">${esc([v.address,v.city].filter(Boolean).join(', '))}</p></div>
     <div class="card"><p class="h">Where things stand</p><ul class="steps">${steps(v)}</ul>${v.install?`<p class="sm" style="margin:10px 0 0"><b>Install day:</b> ${esc(new Date(v.install).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}))}</p>`:''}</div>
     ${optsHTML(v)}${contractHTML(v)}
-    <div class="card"><p class="h">Questions?</p><span>${v.rep?`Your rep is <b>${esc(v.rep)}</b>. `:''}${co.phone?`Call <a href="tel:${esc(String(co.phone).replace(/[^0-9+]/g,''))}" style="color:var(--acc)">${esc(co.phone)}</a>.`:'Reply to the text you got this link in.'}</span></div>
+    <div class="card"><p class="h">Questions?</p><span>${v.rep?`Your rep is <b>${esc(v.rep)}</b>. `:''}${co.phone?`Call <a href="tel:${esc(String(co.phone).replace(/[^0-9+]/g,''))}" style="color:var(--acc)">${esc(fmtPh(co.phone))}</a>.`:'Reply to the text you got this link in.'}</span></div>
     <p class="foot">Powered by <a href="https://useruva.com" target="_blank" rel="noopener">RUVA</a></p>`;
   pad()}
 function pad(){const c=$('#spad');if(!c)return;const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;const x=c.getContext('2d');x.scale(d,d);x.lineWidth=2.4;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';let down=false;c._ink=false;
