@@ -164,7 +164,7 @@ footer .grow{flex:1}
 </div></header>
 <main class="wrap doc">
 <h1>Privacy policy</h1>
-<p class="upd">Last updated November 5, 2026</p>
+<p class="upd">Last updated November 13, 2026</p>
 <p>RUVA is a sales app for roofing reps and roofing companies, run by Thad Jacobs in Lancaster, South Carolina (“RUVA,” “we,” “us”). This policy explains what information RUVA keeps, why, who can see it, and how to delete it. If anything here is unclear, email <a href="mailto:support@useruva.com">support@useruva.com</a>.</p>
 
 <h2>The short version</h2>
@@ -202,6 +202,7 @@ footer .grow{flex:1}
 <p>RUVA relies on a few outside services. They receive only what they need to do their job:</p>
 <ul>
 <li><b>Supabase</b> stores the database, photos and sign-ins, and runs the notification sender.</li>
+<li><b>Intuit QuickBooks Online</b>, only for companies that connect it. See QuickBooks below.</li>
 <li><b>Our email provider</b> delivers sign-in and email-change codes.</li>
 <li><b>Apple, Google and Mozilla push services</b> deliver notifications to devices that turned them on.</li>
 <li><b>Map and location services:</b> map imagery from Esri (and Mapbox, if you add your own key); OpenStreetMap's Nominatim service turns addresses into map locations and back; the OSRM routing service works out driving routes. These receive the addresses or map coordinates involved, not your name.</li>
@@ -209,6 +210,17 @@ footer .grow{flex:1}
 <li><b>Google Fonts</b> delivers the app's typeface.</li>
 <li>When you tap to drive, call or text, your phone's Maps, Phone or Messages app takes over under its own privacy policy.</li>
 </ul>
+
+<h2 id="quickbooks">QuickBooks</h2>
+<p>A company owner or manager can connect the company's QuickBooks Online account (Integrations → QuickBooks). Nothing is sent to QuickBooks unless they do.</p>
+<ul>
+<li><b>What RUVA sends to QuickBooks:</b> for sold jobs, the homeowner's name, phone, email and address, the job, the invoice lines and total, payments recorded in RUVA, and supplier and crew bills (vendor name, amount and job).</li>
+<li><b>What RUVA reads from QuickBooks:</b> your QuickBooks company name, your list of accounts (to choose where sales and bills are recorded), and payments and expenses that are tied to RUVA jobs (amount, date, payee and reference). RUVA doesn't read payroll, employees, bank feeds or anything else in your books.</li>
+<li><b>How we use it:</b> only to keep RUVA and QuickBooks in step for your company. We don't sell it, share it, use it for advertising, or use it to train artificial intelligence or machine-learning models. People in your company see it according to their role, the same as other job information.</li>
+<li><b>How it's protected:</b> the QuickBooks sign-in is encrypted (AES-256) and stored on our server only. It's never sent to anyone's browser or phone, and only owners and managers can connect or disconnect.</li>
+<li><b>Disconnecting:</b> click Disconnect in Integrations → QuickBooks, or remove RUVA from the Apps list inside QuickBooks. Disconnecting deletes the QuickBooks sign-in right away and stops all syncing. The QuickBooks record numbers we kept to avoid duplicates are erased within 30 days. Records already in your QuickBooks stay there, and payments and expenses already brought into RUVA stay on the jobs as part of your records unless you delete them.</li>
+</ul>
+<p>QuickBooks is run by Intuit under its own <a href="https://www.intuit.com/privacy/statement/">privacy statement</a>.</p>
 
 <h2>Keeping and deleting data</h2>
 <ul>
@@ -220,7 +232,7 @@ footer .grow{flex:1}
 </ul>
 
 <h2>Security</h2>
-<p>Data is sent over encrypted connections and stored with our hosting provider. Database rules decide who can read each record, so one company can't reach another's data. No system is perfect; if we learn of a breach that affects you, we'll tell you.</p>
+<p>Data is sent over encrypted connections and stored with our hosting provider. Database rules decide who can read each record, so one company can't reach another's data. Sign-ins to connected services like QuickBooks are encrypted again before they're stored. No system is perfect; if we learn of a breach that affects you, we'll tell you.</p>
 
 <h2>Children</h2>
 <p>RUVA is a work tool for adults. It isn't meant for anyone under 18, and we don't knowingly collect information from children.</p>
