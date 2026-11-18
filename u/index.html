@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Unsubscribe</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<style>
+:root{--bg:#F5F5F7;--card:#FFFFFF;--ink:#1D1D1F;--muted:#6E6E73;--line:rgba(0,0,0,.08);--accent:#0066CC;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#000000;--card:#1C1C1E;--ink:#F5F5F7;--muted:#A1A1A6;--line:rgba(255,255,255,.1);--accent:#2997FF}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);
+  font:17px/1.47 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
+  padding:24px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left))}
+main{width:100%;max-width:440px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:12px}
+h1{margin:0;font-size:24px;line-height:1.2;letter-spacing:-.02em}
+p{margin:0;color:var(--muted)}
+button{margin-top:8px;height:48px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+button:disabled{opacity:.6;cursor:default}
+button:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 40%,transparent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main id="m" aria-live="polite">
+  <h1>Unsubscribe</h1>
+  <p>Stop getting emails from this company? You can still call or text them any time.</p>
+  <button id="go" type="button">Unsubscribe</button>
+</main>
+<script>
+(function(){
+  var t=new URLSearchParams(location.search).get('t')||'', m=document.getElementById('m'), b=document.getElementById('go');
+  function show(h,p){m.innerHTML='';var a=document.createElement('h1');a.textContent=h;var c=document.createElement('p');c.textContent=p;m.appendChild(a);m.appendChild(c)}
+  if(!t){show('This link is incomplete','Open the unsubscribe link from the email again.');return}
+  b.addEventListener('click',function(){
+    b.disabled=true;b.textContent='One moment…';
+    fetch('https://fixqhaewtyddieoimmrv.supabase.co/functions/v1/email',{method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'sb_publishable_q4DRsHwiQPfdMIMgh-lD-g_O_kVURyb'},
+      body:JSON.stringify({action:'unsubscribe',t:t})})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+    .then(function(x){if(x.ok&&x.j&&x.j.ok)show('You’re unsubscribed','You won’t get any more emails from '+(x.j.company||'this company')+'.');
+      else show('That didn’t work',(x.j&&x.j.error)||'Try the link again in a minute.')})
+    .catch(function(){show('That didn’t work','Check your connection and try again.')});
+  });
+})();
+</script>
+</body>
+</html>
